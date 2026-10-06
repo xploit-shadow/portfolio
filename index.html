@@ -1,375 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Zaid Ahmad — student developer, curious builder, creator, and security-minded technologist from India.">
-  <meta name="keywords" content="Zaid Ahmad, student developer, web development, AI, cybersecurity, product builder, content creator">
   <meta name="author" content="Zaid Ahmad">
-  <meta name="theme-color" content="#07100d">
-  <meta property="og:title" content="Zaid Ahmad — Student Developer &amp; Builder">
-  <meta property="og:description" content="A student developer and curious builder exploring web products, AI, cybersecurity, and meaningful content.">
+  <meta name="theme-color" content="#070711">
+  <meta property="og:title" content="Zaid Ahmad — Builder in 3D">
+  <meta property="og:description" content="A 3D command center for Zaid Ahmad's web, AI, cybersecurity, and product experiments.">
   <meta property="og:image" content="ME.webp">
-  <title>Zaid Ahmad — Student Developer &amp; Builder</title>
+  <title>Zaid Ahmad — Builder in 3D</title>
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <div class="grid-floor" aria-hidden="true"></div>
+  <div class="orb orb-a" aria-hidden="true"></div><div class="orb orb-b" aria-hidden="true"></div>
 
-  <video class="video-bg" muted loop playsinline preload="none" poster="back.webp" aria-hidden="true">
-    <source src="vid.mp4" type="video/mp4">
-  </video>
-  <canvas id="code-rain" class="code-rain" aria-hidden="true"></canvas>
-  <div class="ambient ambient-one" aria-hidden="true"></div>
-  <div class="ambient ambient-two" aria-hidden="true"></div>
-
-  <main id="main-content" class="site-shell">
-    <header class="topbar reveal">
-      <a class="brand" href="#top" aria-label="Back to the top">
-        <span class="brand-mark">ZA</span>
-        <span class="brand-copy"><strong>ZAID AHMAD</strong><small>student builder / 2026</small></span>
-      </a>
-      <div class="availability">
-        <span class="status-dot" aria-hidden="true"></span>
-        <span>OPEN TO BUILD</span>
-      </div>
+  <main id="main-content" class="app-shell">
+    <header class="topbar glass-panel reveal">
+      <a class="brand" href="#top" aria-label="Back to top"><span class="brand-mark">ZA</span><span><b>ZAID AHMAD</b><small>BUILDER // NODE_2026</small></span></a>
+      <div class="system-status"><i></i><span>ONLINE</span><small>INDIA / 28.6°N</small></div>
     </header>
 
-    <nav class="category-nav reveal" aria-label="Portfolio categories">
-      <a class="category-link is-active" href="#top" data-target="top" aria-current="page"><span>01</span> PROFILE</a>
-      <a class="category-link" href="#about" data-target="about"><span>02</span> ABOUT</a>
-      <a class="category-link" href="#capabilities" data-target="capabilities"><span>03</span> CAPABILITIES</a>
-      <a class="category-link" href="#products" data-target="products"><span>04</span> PRODUCTS</a>
-      <a class="category-link" href="#creative" data-target="creative"><span>05</span> CREATIVE</a>
-      <a class="category-link" href="#contact" data-target="contact"><span>06</span> CONTACT</a>
+    <nav class="dock glass-panel reveal" aria-label="Portfolio sections">
+      <span class="dock-label">NAVIGATE</span>
+      <div class="dock-links">
+        <a class="dock-link is-active" href="#top" data-target="top" aria-current="page"><b>01</b> CORE</a>
+        <a class="dock-link" href="#about" data-target="about"><b>02</b> STORY</a>
+        <a class="dock-link" href="#capabilities" data-target="capabilities"><b>03</b> SKILLS</a>
+        <a class="dock-link" href="#products" data-target="products"><b>04</b> BUILDS</a>
+        <a class="dock-link" href="#creative" data-target="creative"><b>05</b> SIGNAL</a>
+        <a class="dock-link" href="#contact" data-target="contact"><b>06</b> CONTACT</a>
+      </div>
     </nav>
 
     <section id="top" data-category class="hero reveal" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span>01</span> student developer <i aria-hidden="true">/</i> curious builder</p>
-        <h1 id="hero-title">Build what<br><span>doesn’t exist yet.</span></h1>
-        <p class="hero-intro">I’m Zaid — a student, developer, creator, and curious builder from India. I learn by turning questions into websites, products, experiments, and stories people can actually use.</p>
-        <div class="hero-actions" role="group" aria-label="Primary actions">
-          <a class="button button-primary" href="https://t.me/justlostit" target="_blank" rel="noopener noreferrer">
-            <span>Start a conversation</span><span aria-hidden="true">↗</span>
-          </a>
-          <a class="button button-ghost" href="#capabilities">
-            <span>See what I’m exploring</span><span aria-hidden="true">↓</span>
-          </a>
-        </div>
-        <div class="hero-meta" role="group" aria-label="Profile summary">
-          <span><b>01</b> independent builder</span>
-          <span><b>04</b> active directions</span>
-          <span><b>∞</b> room to learn</span>
-        </div>
+        <p class="kicker"><span>01 / IDENTITY CORE</span> <i>•</i> student developer</p>
+        <h1 id="hero-title">Build beyond<br><em>the flat screen.</em></h1>
+        <p class="hero-intro">I’m Zaid — a student, developer, creator, and curious builder from India. I turn questions into useful interfaces, products, experiments, and stories people can actually use.</p>
+        <div class="hero-actions"><a class="button button-primary" href="https://t.me/justlostit" target="_blank" rel="noopener noreferrer">OPEN CHANNEL <span>↗</span></a><a class="button button-glass" href="#capabilities">EXPLORE SYSTEM <span>↓</span></a></div>
+        <div class="telemetry"><span><b>01</b> BUILDER</span><span><b>04</b> DIRECTIONS</span><span><b>∞</b> POTENTIAL</span></div>
       </div>
-
-      <div class="portrait-card">
-        <div class="portrait-frame">
-          <img src="ME.webp" srcset="ME-320.webp 320w, ME.webp 640w" sizes="(max-width: 520px) 78px, (max-width: 760px) 104px, 330px" alt="Portrait of Zaid Ahmad" class="profile-img" width="640" height="640" fetchpriority="high" decoding="async">
-          <span class="portrait-corner corner-tl" aria-hidden="true"></span>
-          <span class="portrait-corner corner-br" aria-hidden="true"></span>
-        </div>
-        <div class="portrait-caption">
-          <span class="caption-label">CURRENT MODE</span>
-          <strong>LEARN / SHIP / REPEAT</strong>
-        </div>
+      <div class="identity-stage" aria-label="Profile identity core">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
+        <div class="identity-core tilt-card"><div class="core-glow"></div><img src="ME.webp" alt="Portrait of Zaid Ahmad" width="640" height="640" fetchpriority="high"><span class="scanline"></span><span class="core-corner tl"></span><span class="core-corner br"></span></div>
+        <div class="core-label glass-panel"><span>IDENTITY_CORE</span><b>LEARN / SHIP / REPEAT</b><i>● ACTIVE</i></div>
+        <span class="float-tag tag-top">AI + CYBER</span><span class="float-tag tag-side">NODE_001</span>
       </div>
     </section>
 
-    <section class="signal-strip reveal" aria-label="Profile details">
-      <div class="signal-item"><span class="signal-key">ROLE</span><strong>STUDENT + BUILDER</strong></div>
-      <div class="signal-item"><span class="signal-key">EXPLORING</span><strong>AI + CYBERSECURITY</strong></div>
-      <div class="signal-item"><span class="signal-key">WORKING TOWARD</span><strong class="signal-live">USEFUL DIGITAL PRODUCTS</strong></div>
-    </section>
+    <section class="signal-strip glass-panel reveal" aria-label="Profile telemetry"><div><small>ROLE</small><b>STUDENT + BUILDER</b></div><div><small>EXPLORING</small><b>AI + CYBERSECURITY</b></div><div><small>MISSION</small><b class="accent">USEFUL DIGITAL PRODUCTS</b></div></section>
 
-    <section id="about" data-category class="about-section reveal" aria-labelledby="about-title">
-      <div class="section-heading about-heading">
-        <p class="eyebrow"><span>02</span> the short version</p>
-        <h2 id="about-title">Curiosity turns<br>into <em>action.</em></h2>
-      </div>
-      <div class="about-copy">
-        <div>
-          <p>I don’t learn technology only by following tutorials. I learn by trying to build something that doesn’t exist yet — then investigating every problem that appears along the way.</p>
-          <p>That means experimenting with websites, web applications, databases, hosting environments, and the tools behind them. The bugs, deployment issues, and unexpected failures are part of the education.</p>
-        </div>
-        <blockquote>“Understand the problem. Break it down. Solve it piece by piece.”</blockquote>
-      </div>
-    </section>
+    <section id="about" data-category class="section split-section reveal" aria-labelledby="about-title"><div class="section-index">02<br><span>STORY</span></div><div><p class="kicker"><span>THE HUMAN LAYER</span></p><h2 id="about-title">Curiosity becomes<br><em>momentum.</em></h2><div class="story-grid"><div><p>I don’t learn technology only by following tutorials. I learn by trying to build something that doesn’t exist yet — then investigating every problem that appears along the way.</p><p>Websites, apps, databases, hosting environments, and the unexpected failures in between are all part of the education.</p></div><blockquote>“Understand the problem.<br><strong>Break it down. Solve it.</strong>”</blockquote></div></div></section>
 
-    <section id="capabilities" data-category class="content-section reveal" aria-labelledby="focus-title">
-      <div class="section-heading">
-        <p class="eyebrow"><span>03</span> what I’m exploring</p>
-        <h2 id="focus-title">A practical mix of<br><em>craft and curiosity.</em></h2>
-      </div>
-      <div class="focus-grid">
-        <article class="focus-card focus-card-featured">
-          <div class="card-topline"><span class="card-number">01</span><span class="card-tag">CORE</span></div>
-          <div class="card-icon" aria-hidden="true">⌁</div>
-          <h3>Web products</h3>
-          <p>Turning everyday problems into clear interfaces and usable web applications — from first idea to working prototype.</p>
-          <div class="tag-list"><span>HTML / CSS</span><span>JAVASCRIPT</span><span>REACT</span></div>
-        </article>
-        <article class="focus-card">
-          <div class="card-topline"><span class="card-number">02</span><span class="card-tag">EXPERIMENT</span></div>
-          <div class="card-icon" aria-hidden="true">✦</div>
-          <h3>AI workflows</h3>
-          <p>Exploring how AI can support research, education, businesses, content creation, and one-person product building.</p>
-          <div class="tag-list"><span>AI TOOLS</span><span>PROTOTYPING</span></div>
-        </article>
-        <article class="focus-card">
-          <div class="card-topline"><span class="card-number">03</span><span class="card-tag">STUDY</span></div>
-          <div class="card-icon" aria-hidden="true">◈</div>
-          <h3>Security thinking</h3>
-          <p>Learning how systems behave, where they break, and how stronger foundations make the things we build more resilient.</p>
-          <div class="tag-list"><span>CYBERSECURITY</span><span>NETWORKS</span></div>
-        </article>
-        <article class="focus-card">
-          <div class="card-topline"><span class="card-number">04</span><span class="card-tag">CREATE</span></div>
-          <div class="card-icon" aria-hidden="true">◌</div>
-          <h3>Content &amp; stories</h3>
-          <p>Exploring philosophy, psychology, human behaviour, and ambition through short-form concepts, scripts, and visual ideas.</p>
-          <div class="tag-list"><span>WRITING</span><span>STORYTELLING</span></div>
-        </article>
-      </div>
-    </section>
+    <section id="capabilities" data-category class="section reveal" aria-labelledby="skills-title"><div class="section-head"><div><p class="kicker"><span>03 / LOADOUT</span></p><h2 id="skills-title">A practical mix of<br><em>craft + curiosity.</em></h2></div><span class="section-note">4 ACTIVE MODULES</span></div><div class="module-grid">
+      <article class="module-card tilt-card featured"><div class="module-meta"><b>01</b><span>CORE</span></div><div class="module-icon">⌁</div><h3>Web products</h3><p>Clear interfaces and usable applications — from first idea to working prototype.</p><div class="chips"><span>HTML / CSS</span><span>JAVASCRIPT</span><span>REACT</span></div></article>
+      <article class="module-card tilt-card"><div class="module-meta"><b>02</b><span>EXPERIMENT</span></div><div class="module-icon">✦</div><h3>AI workflows</h3><p>Research, education, business, content creation, and one-person product building.</p><div class="chips"><span>AI TOOLS</span><span>PROTOTYPING</span></div></article>
+      <article class="module-card tilt-card"><div class="module-meta"><b>03</b><span>STUDY</span></div><div class="module-icon">◈</div><h3>Security thinking</h3><p>Learning how systems behave, where they break, and how to build resilient foundations.</p><div class="chips"><span>CYBERSECURITY</span><span>NETWORKS</span></div></article>
+      <article class="module-card tilt-card"><div class="module-meta"><b>04</b><span>CREATE</span></div><div class="module-icon">◌</div><h3>Content &amp; stories</h3><p>Philosophy, psychology, human behaviour, ambition, scripts, and visual ideas.</p><div class="chips"><span>WRITING</span><span>STORYTELLING</span></div></article>
+    </div></section>
 
-    <section id="products" data-category class="product-section reveal" aria-labelledby="product-title">
-      <div class="section-heading">
-        <p class="eyebrow"><span>04</span> ideas becoming products</p>
-        <h2 id="product-title">Build for people,<br><em>not feature lists.</em></h2>
-      </div>
-      <div class="project-toolbar">
-        <div class="project-filters" role="group" aria-label="Project categories">
-          <button class="project-filter is-active" type="button" data-filter="all" aria-pressed="true">ALL <span>03</span></button>
-          <button class="project-filter" type="button" data-filter="web" aria-pressed="false">WEB <span>02</span></button>
-          <button class="project-filter" type="button" data-filter="education" aria-pressed="false">EDUCATION <span>01</span></button>
-          <button class="project-filter" type="button" data-filter="local" aria-pressed="false">LOCAL BUSINESS <span>01</span></button>
-        </div>
-        <p class="project-filter-status" aria-live="polite">Showing <strong>03</strong> projects</p>
-      </div>
-      <div class="product-grid">
-        <article class="product-card product-card-wide" data-project="web education"><span class="product-index">A / 01</span><h3>Library management platform</h3><p>A system designed around study libraries: attendance, QR-based identification, seat management, fees, notifications, and an owner dashboard.</p><span class="product-status">CONCEPT / PRODUCT SYSTEM</span></article>
-        <article class="product-card" data-project="web education"><span class="product-index">B / 02</span><h3>School portals</h3><p>Digital systems that bring information, communication, and everyday school workflows into one clearer place.</p><span class="product-status">EXPLORING</span></article>
-        <article class="product-card" data-project="local"><span class="product-index">C / 03</span><h3>Smart café ordering</h3><p>Simple ordering experiences that reduce friction for customers and make operations easier for local businesses.</p><span class="product-status">EXPLORING</span></article>
-      </div>
-      <p class="product-note"><span aria-hidden="true">↳</span> The goal is not to add the most features. It is to understand what people actually need.</p>
-    </section>
+    <section id="products" data-category class="section reveal" aria-labelledby="builds-title"><div class="section-head"><div><p class="kicker"><span>04 / BUILD LOG</span></p><h2 id="builds-title">Ideas becoming<br><em>real-world nodes.</em></h2></div></div><div class="project-toolbar glass-panel"><div class="project-filters" role="group" aria-label="Project categories"><button class="project-filter is-active" type="button" data-filter="all" aria-pressed="true">ALL <span>03</span></button><button class="project-filter" type="button" data-filter="web" aria-pressed="false">WEB <span>02</span></button><button class="project-filter" type="button" data-filter="education" aria-pressed="false">EDU <span>01</span></button><button class="project-filter" type="button" data-filter="local" aria-pressed="false">LOCAL <span>01</span></button></div><p class="project-filter-status" aria-live="polite">SHOWING <strong>03</strong> NODES</p></div><div class="build-grid"><article class="build-card build-wide tilt-card" data-project="web education"><span class="build-id">A / 01</span><div class="build-symbol">▦</div><h3>Library management platform</h3><p>Attendance, QR identification, seat management, fees, notifications, and an owner dashboard.</p><span class="build-status">CONCEPT / PRODUCT SYSTEM</span></article><article class="build-card tilt-card" data-project="web education"><span class="build-id">B / 02</span><div class="build-symbol">⌘</div><h3>School portals</h3><p>Information, communication, and everyday school workflows in one clear place.</p><span class="build-status">EXPLORING</span></article><article class="build-card tilt-card" data-project="local"><span class="build-id">C / 03</span><div class="build-symbol">◇</div><h3>Smart café ordering</h3><p>Less friction for customers and simpler operations for local businesses.</p><span class="build-status">EXPLORING</span></article></div><p class="build-note">↳ The goal is not more features. It is understanding what people actually need.</p></section>
 
-    <section id="creative" data-category class="creator-section reveal" aria-labelledby="creator-title">
-      <div class="creator-mark" aria-hidden="true">✳</div>
-      <div>
-        <p class="eyebrow"><span>05</span> beyond the code</p>
-        <h2 id="creator-title">Make every minute<br><em>worth keeping.</em></h2>
-        <p>I’m also exploring content around philosophy, psychology, human behaviour, ambition, perfectionism, and the struggles people experience every day. If someone spends a minute with something I make, I want them to leave with an idea, a perspective, or a question worth carrying forward.</p>
-      </div>
-    </section>
+    <section id="creative" data-category class="signal-section reveal" aria-labelledby="creative-title"><div class="signal-orb">✳</div><div><p class="kicker"><span>05 / SIGNAL</span></p><h2 id="creative-title">Make every minute<br><em>worth keeping.</em></h2><p>I’m also exploring philosophy, psychology, human behaviour, ambition, perfectionism, and the struggles people experience every day. If someone spends a minute with something I make, I want them to leave with an idea or question worth carrying forward.</p></div></section>
 
-    <section id="contact" data-category class="connect-panel reveal" aria-labelledby="connect-title">
-      <div>
-        <p class="eyebrow"><span>06</span> find me online</p>
-        <h2 id="connect-title">Still at the beginning.<br><em>Still building.</em></h2>
-        <p class="connect-note">I’m working toward better software, deeper AI and cybersecurity knowledge, useful products, and eventually businesses that help local organisations use technology well.</p>
-      </div>
-      <nav class="social-grid" aria-label="Contact links">
-        <a class="social-link" href="https://t.me/justlostit" target="_blank" rel="noopener noreferrer" aria-label="Contact on Telegram at justlostit">
-          <span class="social-icon" aria-hidden="true">↗</span><span><small>MESSAGE</small><strong>Telegram</strong></span><span class="social-arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="social-link" href="mailto:hitme@xploitshadow.com" aria-label="Email contactme at xploitshadow.com">
-          <span class="social-icon" aria-hidden="true">@</span><span><small>CONTACT</small><strong>Email</strong></span><span class="social-arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="social-link" href="https://www.instagram.com/Xploitshadow/" target="_blank" rel="noopener noreferrer">
-          <span class="social-icon" aria-hidden="true">◎</span><span><small>FOLLOW</small><strong>Instagram</strong></span><span class="social-arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="social-link" href="https://github.com/xploit-shadow" target="_blank" rel="noopener noreferrer">
-          <span class="social-icon" aria-hidden="true">⌘</span><span><small>VIEW WORK</small><strong>GitHub</strong></span><span class="social-arrow" aria-hidden="true">→</span>
-        </a>
-      </nav>
-    </section>
+    <section id="contact" data-category class="section contact-section reveal" aria-labelledby="contact-title"><div><p class="kicker"><span>06 / TRANSMIT</span></p><h2 id="contact-title">Still beginning.<br><em>Still building.</em></h2><p class="connect-note">Better software, deeper AI and cybersecurity knowledge, useful products, and businesses that help local organisations use technology well.</p></div><nav class="social-grid" aria-label="Contact links"><a class="social-link tilt-card" href="https://t.me/justlostit" target="_blank" rel="noopener noreferrer"><span>↗</span><b>TELEGRAM</b><i>OPEN CHANNEL →</i></a><a class="social-link tilt-card" href="mailto:hitme@xploitshadow.com"><span>@</span><b>EMAIL</b><i>SEND MESSAGE →</i></a><a class="social-link tilt-card" href="https://www.instagram.com/Xploitshadow/" target="_blank" rel="noopener noreferrer"><span>◎</span><b>INSTAGRAM</b><i>FOLLOW SIGNAL →</i></a><a class="social-link tilt-card" href="https://github.com/xploit-shadow" target="_blank" rel="noopener noreferrer"><span>⌘</span><b>GITHUB</b><i>VIEW WORK →</i></a></nav></section>
 
-    <footer class="site-footer">
-      <span>© <span id="year">2026</span> ZAID AHMAD</span>
-      <span class="footer-line" aria-hidden="true"></span>
-      <span>BUILT WITH CURIOSITY <span class="footer-symbol" aria-hidden="true">✳</span></span>
-    </footer>
+    <footer class="site-footer"><span>© <span id="year">2026</span> ZAID AHMAD</span><span></span><span>BUILT WITH CURIOSITY ✳</span></footer>
   </main>
 
   <script>
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const backgroundVideo = document.querySelector('.video-bg');
-    if (backgroundVideo && !reduceMotion.matches && window.innerWidth > 760) {
-      const startVideo = () => {
-        backgroundVideo.load();
-        backgroundVideo.play().catch(() => {});
-      };
-      if ('requestIdleCallback' in window) window.requestIdleCallback(startVideo, { timeout: 1800 });
-      else window.setTimeout(startVideo, 1400);
-    }
-
-    (function setupCodeRain() {
-      const canvas = document.getElementById('code-rain');
-      if (!canvas || reduceMotion.matches) return;
-      const ctx = canvas.getContext('2d');
-      let width = 0;
-      let height = 0;
-      let columns = 0;
-      let drops = [];
-      let animationFrame = 0;
-      let lastFrame = 0;
-      let running = false;
-      const fontSize = 16;
-      let columnSize = fontSize;
-      const chars = 'アカサタナハマヤラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-      const frameInterval = window.innerWidth <= 520 ? 1000 / 24 : 1000 / 30;
-
-      function resize() {
-        const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
-        width = window.innerWidth;
-        height = window.innerHeight;
-        columnSize = width <= 520 ? 20 : fontSize;
-        canvas.width = Math.floor(width * ratio);
-        canvas.height = Math.floor(height * ratio);
-        canvas.style.width = `${width}px`;
-        canvas.style.height = `${height}px`;
-        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-        columns = Math.ceil(width / columnSize);
-        drops = Array.from({ length: columns }, () => Math.random() * (height / fontSize));
-        ctx.font = `${fontSize}px DM Mono, monospace`;
-      }
-
-      function draw(timestamp) {
-        if (!running) return;
-        if (timestamp - lastFrame < frameInterval) {
-          animationFrame = window.requestAnimationFrame(draw);
-          return;
-        }
-        lastFrame = timestamp;
-        ctx.fillStyle = 'rgba(4, 9, 7, 0.12)';
-        ctx.fillRect(0, 0, width, height);
-        for (let i = 0; i < columns; i += 1) {
-          const char = chars[Math.floor(Math.random() * chars.length)];
-          const x = i * columnSize;
-          const y = drops[i] * fontSize;
-          const accent = i % 23 === 0;
-          ctx.fillStyle = accent ? 'rgba(255, 109, 125, 0.65)' : 'rgba(116, 255, 179, 0.52)';
-          ctx.fillText(char, x, y);
-          if (y > height && Math.random() > 0.975) drops[i] = 0;
-          else drops[i] += width <= 520 ? 0.78 : 1;
-        }
-        animationFrame = window.requestAnimationFrame(draw);
-      }
-
-      function start() {
-        if (running) return;
-        running = true;
-        lastFrame = 0;
-        animationFrame = window.requestAnimationFrame(draw);
-      }
-
-      function stop() {
-        running = false;
-        window.cancelAnimationFrame(animationFrame);
-      }
-
-      resize();
-      let resizeFrame = 0;
-      window.addEventListener('resize', () => {
-        window.cancelAnimationFrame(resizeFrame);
-        resizeFrame = window.requestAnimationFrame(resize);
-      }, { passive: true });
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) stop();
-        else start();
-      });
-      if (!document.hidden) start();
-    }());
-
-    (function setupReveal() {
-      const elements = document.querySelectorAll('.reveal');
-      if (reduceMotion.matches || !('IntersectionObserver' in window)) {
-        elements.forEach((element) => element.classList.add('is-visible'));
-        return;
-      }
-      const observer = new IntersectionObserver((entries, currentObserver) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('is-visible');
-          currentObserver.unobserve(entry.target);
-        });
-      }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
-      elements.forEach((element) => observer.observe(element));
-    }());
-
-    (function setupCategoryNavigation() {
-      const links = Array.from(document.querySelectorAll('.category-link'));
-      const sections = Array.from(document.querySelectorAll('[data-category]'));
-      if (!links.length || !sections.length) return;
-      let activeId = 'top';
-
-      function setActive(id, center = false) {
-        if (!id || (id === activeId && !center)) return;
-        activeId = id;
-        links.forEach((link) => {
-          const active = link.dataset.target === id;
-          link.classList.toggle('is-active', active);
-          if (active) link.setAttribute('aria-current', 'page');
-          else link.removeAttribute('aria-current');
-          if (active && center) link.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'nearest', inline: 'center' });
-        });
-      }
-
-      links.forEach((link) => link.addEventListener('click', () => setActive(link.dataset.target, true)));
-      if (!('IntersectionObserver' in window)) return;
-      const observer = new IntersectionObserver((entries) => {
-        const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]) setActive(visible[0].target.id);
-      }, { rootMargin: '-20% 0px -64% 0px', threshold: [0, 0.18, 0.45] });
-      sections.forEach((section) => observer.observe(section));
-    }());
-
-    (function setupProjectFilters() {
-      const filters = Array.from(document.querySelectorAll('.project-filter'));
-      const cards = Array.from(document.querySelectorAll('[data-project]'));
-      const status = document.querySelector('.project-filter-status strong');
-      if (!filters.length || !cards.length || !status) return;
-
-      function applyFilter(filter) {
-        let visible = 0;
-        cards.forEach((card) => {
-          const matches = filter === 'all' || card.dataset.project.split(' ').includes(filter);
-          card.hidden = !matches;
-          card.classList.toggle('is-filtered', matches);
-          if (matches) visible += 1;
-        });
-        filters.forEach((button) => {
-          const active = button.dataset.filter === filter;
-          button.classList.toggle('is-active', active);
-          button.setAttribute('aria-pressed', String(active));
-        });
-        status.textContent = String(visible).padStart(2, '0');
-      }
-
-      filters.forEach((button) => button.addEventListener('click', () => applyFilter(button.dataset.filter)));
-      applyFilter('all');
-    }());
-
-    document.addEventListener('click', (event) => {
-      const link = event.target.closest('.social-link');
-      if (!link || reduceMotion.matches) return;
-      const rect = link.getBoundingClientRect();
-      const ripple = document.createElement('span');
-      ripple.className = 'ripple';
-      ripple.style.left = `${event.clientX - rect.left}px`;
-      ripple.style.top = `${event.clientY - rect.top}px`;
-      link.appendChild(ripple);
-      window.setTimeout(() => ripple.remove(), 650);
-    }, { passive: true });
-
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const q = (s, root = document) => root.querySelector(s);
+    const qa = (s, root = document) => [...root.querySelectorAll(s)];
+    (function starfield(){ const canvas=q('#starfield'); if(!canvas||reduceMotion.matches)return; const ctx=canvas.getContext('2d'); let w,h,stars=[]; function resize(){const r=Math.min(devicePixelRatio||1,1.5);w=innerWidth;h=innerHeight;canvas.width=w*r;canvas.height=h*r;canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(r,0,0,r,0,0);stars=Array.from({length:w<600?70:145},()=>({x:Math.random()*w,y:Math.random()*h,z:Math.random()*1+.15,s:Math.random()*1.7+.2}))} function draw(t){ctx.clearRect(0,0,w,h);stars.forEach(s=>{s.y+=s.s*.08;if(s.y>h)s.y=0;ctx.globalAlpha=.18+s.z*.35;ctx.fillStyle=s.z>.8?'#c5a8ff':'#8dffcf';ctx.beginPath();ctx.arc(s.x,s.y,s.z*1.4,0,Math.PI*2);ctx.fill()});requestAnimationFrame(draw)} resize();addEventListener('resize',resize,{passive:true});requestAnimationFrame(draw) }());
+    (function tilt(){ if(reduceMotion.matches||matchMedia('(hover: none)').matches)return; qa('.tilt-card').forEach(card=>{card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.setProperty('--rx',`${-y*8}deg`);card.style.setProperty('--ry',`${x*10}deg`);card.style.setProperty('--mx',`${(x+.5)*100}%`);card.style.setProperty('--my',`${(y+.5)*100}%`)});card.addEventListener('pointerleave',()=>{card.style.setProperty('--rx','0deg');card.style.setProperty('--ry','0deg')})}) }());
+    (function reveal(){const els=qa('.reveal'); if(reduceMotion.matches||!('IntersectionObserver'in window)){els.forEach(e=>e.classList.add('is-visible'));return}const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target)}}),{threshold:.08});els.forEach(e=>io.observe(e))}());
+    (function nav(){const links=qa('.dock-link'),sections=qa('[data-category]');function active(id){links.forEach(l=>{const yes=l.dataset.target===id;l.classList.toggle('is-active',yes);yes?l.setAttribute('aria-current','page'):l.removeAttribute('aria-current')})}const io=new IntersectionObserver(es=>{const e=es.filter(x=>x.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(e)active(e.target.id)},{rootMargin:'-20% 0px -65% 0px',threshold:[.1,.4]});sections.forEach(s=>io.observe(s));links.forEach(l=>l.addEventListener('click',()=>active(l.dataset.target)))}());
+    (function filters(){const buttons=qa('.project-filter'),cards=qa('[data-project]'),status=q('.project-filter-status strong');function apply(filter){let count=0;cards.forEach(c=>{const yes=filter==='all'||c.dataset.project.split(' ').includes(filter);c.hidden=!yes;c.classList.toggle('is-filtered',yes);if(yes)count++});buttons.forEach(b=>{const yes=b.dataset.filter===filter;b.classList.toggle('is-active',yes);b.setAttribute('aria-pressed',yes)});status.textContent=String(count).padStart(2,'0')}buttons.forEach(b=>b.addEventListener('click',()=>apply(b.dataset.filter)));apply('all')}());
+    q('#year').textContent=new Date().getFullYear();
   </script>
 </body>
 </html>
