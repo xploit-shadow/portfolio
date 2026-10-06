@@ -1,15 +1,21 @@
-
-/* Contained command HUD: generated shards stay inside a deliberate viewport band. */
-#data-shards{top:0!important;bottom:auto!important;height:38px!important;overflow:hidden!important;opacity:.78;mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%)}
+/* Final authoritative visual, scroll, and interaction overrides. */
+html,body{overscroll-behavior-y:none}
+.app-shell{position:relative!important;z-index:2!important;isolation:isolate}
+#starfield,#particle-field{position:fixed!important;inset:0!important;z-index:-3!important;pointer-events:none!important}
+#data-shards{position:fixed!important;top:0!important;right:0!important;bottom:auto!important;left:0!important;height:38px!important;z-index:1!important;overflow:hidden!important;pointer-events:none!important;opacity:.78;mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%)}
 #data-shards:before{content:"";position:absolute;inset:0;border-bottom:1px solid rgba(173,139,255,.22);background:linear-gradient(90deg,rgba(173,139,255,.07),transparent 38%,rgba(108,244,227,.05));pointer-events:none}
 .data-shard{position:absolute!important;top:10px;left:calc(var(--i) * 9.5% - 4%);display:block;max-width:12vw;overflow:hidden;color:rgba(213,208,255,.58);font:9px/1 var(--mono);letter-spacing:.08em;white-space:nowrap;text-overflow:ellipsis;transform:translateX(calc(var(--pointer-x,50%) * .03 - 1.5%));transition:color .25s ease,opacity .25s ease}
 .data-shard:nth-child(3n){color:rgba(182,255,106,.64)}.data-shard:nth-child(4n){color:rgba(108,244,227,.58)}
-.identity-stage{--globe-hover:0;transition:transform .55s var(--ease)}
-.globe-shell{cursor:crosshair;transition:transform .55s var(--ease),box-shadow .55s var(--ease),filter .55s var(--ease)!important}
+.reveal{opacity:1!important;transform:none!important}
+.identity-core.globe-shell{display:grid!important;width:min(78%,390px)!important;height:auto!important;aspect-ratio:1/1!important;padding:11px!important;border:1px solid rgba(182,255,106,.58)!important;border-radius:50%!important;overflow:visible!important;transform-style:preserve-3d!important;cursor:crosshair;transition:transform .55s var(--ease),box-shadow .55s var(--ease),filter .55s var(--ease)!important}
+.identity-core.globe-shell .portrait-globe{display:block!important;position:relative!important;width:100%!important;height:100%!important;min-width:0!important;min-height:0!important;overflow:hidden!important;border:0!important;border-radius:50%!important;clip-path:circle(50% at 50% 50%)!important;background:#0b1020!important;transform:translateZ(25px)!important;transition:filter .45s var(--ease),box-shadow .45s var(--ease)}
+.identity-core.globe-shell .portrait-globe img{display:block!important;width:100%!important;height:100%!important;max-width:none!important;min-width:0!important;border:0!important;border-radius:50%!important;object-fit:cover!important;transform:scale(1.08)!important}
+.identity-core.globe-shell .portrait-globe:before,.identity-core.globe-shell .portrait-globe:after,.identity-core.globe-shell .globe-lat,.identity-core.globe-shell .globe-lon,.identity-core.globe-shell .globe-sheen{border-radius:50%!important}
 .globe-shell:hover{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) rotateZ(-4deg) translateZ(12px) scale(1.025)!important;filter:saturate(1.08);box-shadow:20px 25px 0 rgba(173,139,255,.15),0 0 105px rgba(108,244,227,.22),inset 0 0 32px rgba(182,255,106,.12)!important}
-.portrait-globe{transition:filter .45s var(--ease),box-shadow .45s var(--ease)}.portrait-globe:hover{filter:saturate(1.14) contrast(1.05);box-shadow:inset -24px -15px 40px rgba(0,0,0,.62),inset 18px 8px 28px rgba(255,255,255,.13),0 0 36px rgba(182,255,106,.28)}
+.portrait-globe:hover{filter:saturate(1.14) contrast(1.05);box-shadow:inset -24px -15px 40px rgba(0,0,0,.62),inset 18px 8px 28px rgba(255,255,255,.13),0 0 36px rgba(182,255,106,.28)}
 .globe-pin{cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s var(--ease),filter .25s var(--ease)}.globe-pin:hover{transform:scale(1.28)!important;filter:brightness(1.2);box-shadow:0 0 0 7px rgba(182,255,106,.1),0 0 28px rgba(182,255,106,.75)!important}
 .identity-stage .orbit{pointer-events:none;transition:filter .35s ease,opacity .35s ease}.identity-stage:hover .orbit{filter:drop-shadow(0 0 6px rgba(108,244,227,.45));opacity:.9}
 .core-label,.float-tag{transition:transform .35s var(--ease),border-color .35s ease,box-shadow .35s ease}.core-label:hover,.float-tag:hover{border-color:var(--lime);box-shadow:0 0 24px rgba(182,255,106,.16);transform:translateZ(62px) translateY(-3px)}
-@media(max-width:650px){#data-shards{height:30px!important}.data-shard{top:9px;max-width:22vw;font-size:7px;left:calc(var(--i) * 15% - 7%)}.globe-shell:hover{transform:rotateZ(-4deg) scale(1.015)!important}.core-label:hover,.float-tag:hover{transform:none}}
+@media(max-width:1000px){.identity-core.globe-shell{width:min(64%,380px)!important}}
+@media(max-width:650px){#data-shards{height:30px!important}.data-shard{top:9px;max-width:22vw;font-size:7px;left:calc(var(--i) * 15% - 7%)}.identity-core.globe-shell{width:min(68vw,270px)!important;min-width:188px!important;padding:8px!important}.identity-core.globe-shell .portrait-globe{transform:translateZ(14px)!important}.globe-shell:hover{transform:rotateZ(-4deg) scale(1.015)!important}.core-label:hover,.float-tag:hover{transform:none}}
 @media(prefers-reduced-motion:reduce){.globe-shell:hover{transform:none!important}.data-shard{transform:none!important}}
