@@ -1,7 +1,7 @@
-/* Explicit final globe geometry; loaded after the legacy card styles. */
-.identity-core.globe-shell{display:grid!important;width:min(78%,390px)!important;height:auto!important;aspect-ratio:1/1!important;padding:11px!important;border:1px solid rgba(182,255,106,.58)!important;border-radius:50%!important;overflow:visible!important;transform-style:preserve-3d!important}
-.identity-core.globe-shell .portrait-globe{display:block!important;position:relative!important;width:100%!important;height:100%!important;min-width:0!important;min-height:0!important;overflow:hidden!important;border:0!important;border-radius:50%!important;clip-path:circle(50% at 50% 50%)!important;background:#0b1020!important;transform:translateZ(25px)!important}
-.identity-core.globe-shell .portrait-globe img{display:block!important;width:100%!important;height:100%!important;max-width:none!important;min-width:0!important;border:0!important;border-radius:50%!important;object-fit:cover!important;transform:scale(1.08)!important}
-.identity-core.globe-shell .portrait-globe:before,.identity-core.globe-shell .portrait-globe:after{border-radius:50%!important}
-.identity-core.globe-shell .globe-lat,.identity-core.globe-shell .globe-lon,.identity-core.globe-shell .globe-sheen{border-radius:50%!important}
-@media(max-width:650px){.identity-core.globe-shell{width:min(68vw,270px)!important;min-width:188px!important;padding:8px!important}.identity-core.globe-shell .portrait-globe{transform:translateZ(14px)!important}}
+
+/* Scroll safety: decorative layers never replace the readable page. */
+html,body{overscroll-behavior-y:none}
+.app-shell{position:relative!important;z-index:2!important;isolation:isolate}
+#starfield,#particle-field{position:fixed!important;inset:0!important;z-index:-3!important;pointer-events:none!important}
+#data-shards{position:fixed!important;inset:0!important;z-index:-1!important;pointer-events:none!important}
+.reveal{opacity:1!important;transform:none!important}
