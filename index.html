@@ -42,14 +42,6 @@
       </div>
     </nav>
 
-    <div class="scene-hud glass-panel reveal" aria-label="3D scene controls">
-      <span class="scene-hud-title">SCENE_02 // ORBIT CONTROL</span>
-      <button type="button" class="scene-toggle is-on" data-scene-control="orbit" aria-pressed="true">ORBIT: ON</button>
-      <button type="button" class="scene-toggle is-on" data-scene-control="depth" aria-pressed="true">DEPTH: ON</button>
-      <button type="button" class="scene-toggle" data-scene-control="shards" aria-pressed="true">SHARDS: ON</button>
-      <span class="scene-readout" id="scroll-readout">DEPTH 000</span>
-    </div>
-
     <section id="top" data-category class="hero reveal" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="kicker"><span>01 / IDENTITY CORE</span> <i>•</i> student developer</p>
@@ -95,17 +87,20 @@
     (function reveal(){const els=qa('.reveal'); if(reduceMotion.matches||!('IntersectionObserver'in window)){els.forEach(e=>e.classList.add('is-visible'));return}const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target)}}),{threshold:.08});els.forEach(e=>io.observe(e))}());
     (function nav(){const links=qa('.dock-link'),sections=qa('[data-category]');function active(id){links.forEach(l=>{const yes=l.dataset.target===id;l.classList.toggle('is-active',yes);yes?l.setAttribute('aria-current','page'):l.removeAttribute('aria-current')})}const io=new IntersectionObserver(es=>{const e=es.filter(x=>x.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(e)active(e.target.id)},{rootMargin:'-20% 0px -65% 0px',threshold:[.1,.4]});sections.forEach(s=>io.observe(s));links.forEach(l=>l.addEventListener('click',()=>active(l.dataset.target)))}());
     (function filters(){const buttons=qa('.project-filter'),cards=qa('[data-project]'),status=q('.project-filter-status strong');function apply(filter){let count=0;cards.forEach(c=>{const yes=filter==='all'||c.dataset.project.split(' ').includes(filter);c.hidden=!yes;c.classList.toggle('is-filtered',yes);if(yes)count++});buttons.forEach(b=>{const yes=b.dataset.filter===filter;b.classList.toggle('is-active',yes);b.setAttribute('aria-pressed',yes)});status.textContent=String(count).padStart(2,'0')}buttons.forEach(b=>b.addEventListener('click',()=>apply(b.dataset.filter)));apply('all')}());
-    (function sceneControl(){
-      const body=document.body, hud=q('.scene-hud'), readout=q('#scroll-readout'), stage=q('.identity-stage'), shardRoot=q('#data-shards');
-      if(!hud) return;
+    (function sceneMotion(){
+      const body=document.body, stage=q('.identity-stage'), shardRoot=q('#data-shards');
       const labels=['0101','BUILD','AI_NODE','SHIP_IT','0xZA','SECURE','QUERY','REPEAT','NODE_07','IDEATE','/ROOT','STACK'];
       labels.forEach((label,index)=>{const shard=document.createElement('span');shard.className='data-shard';shard.textContent=label;shard.style.setProperty('--i',index);shardRoot.appendChild(shard)});
-      const controls=qa('[data-scene-control]');
-      controls.forEach(button=>button.addEventListener('click',()=>{const key=button.dataset.sceneControl;const off=body.classList.toggle('scene-'+key+'-off');const on=!off;button.classList.toggle('is-on',on);button.setAttribute('aria-pressed',String(on));button.textContent=key.toUpperCase()+': '+(on?'ON':'OFF')}));
-      if(reduceMotion.matches) body.classList.add('scene-orbit-off','scene-depth-off','scene-shards-off');
       let frame=0,px=50,py=50;
       addEventListener('pointermove',event=>{if(matchMedia('(hover: none)').matches)return;px=event.clientX/innerWidth*100;py=event.clientY/innerHeight*100;cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{body.style.setProperty('--pointer-x',px+'%');body.style.setProperty('--pointer-y',py+'%');if(stage){stage.style.setProperty('--stage-tilt-x',(py-50)/18+'deg');stage.style.setProperty('--stage-tilt-y',(px-50)/18+'deg')}})},{passive:true});
-      let scrollFrame=0;addEventListener('scroll',()=>{cancelAnimationFrame(scrollFrame);scrollFrame=requestAnimationFrame(()=>{const max=document.documentElement.scrollHeight-innerHeight;const progress=max>0?scrollY/max:0;body.style.setProperty('--scroll-depth',progress);if(readout)readout.textContent='DEPTH '+String(Math.round(progress*999)).padStart(3,'0')})},{passive:true});
+      let scrollFrame=0;addEventListener('scroll',()=>{cancelAnimationFrame(scrollFrame);scrollFrame=requestAnimationFrame(()=>{const max=document.documentElement.scrollHeight-innerHeight;body.style.setProperty('--scroll-depth',max>0?scrollY/max:0)})},{passive:true});
+    }());
+    (function interactionSound(){
+      if(reduceMotion.matches||!window.AudioContext&&!window.webkitAudioContext)return;
+      let audioContext;
+      const AudioCtor=window.AudioContext||window.webkitAudioContext;
+      function blip(kind='click'){audioContext=audioContext||new AudioCtor();if(audioContext.state==='suspended')audioContext.resume();const now=audioContext.currentTime;const osc=audioContext.createOscillator();const gain=audioContext.createGain();const filter=audioContext.createBiquadFilter();const settings={click:[520,.055,'sine',.018],filter:[310,.09,'triangle',.014],link:[660,.12,'sine',.016],nav:[240,.07,'square',.008]}[kind]||[520,.055,'sine',.012];osc.type=settings[2];osc.frequency.setValueAtTime(settings[0],now);osc.frequency.exponentialRampToValueAtTime(settings[0]*1.35,now+settings[1]);filter.type='lowpass';filter.frequency.value=1800;gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(settings[3],now+.008);gain.gain.exponentialRampToValueAtTime(.0001,now+settings[1]);osc.connect(filter).connect(gain).connect(audioContext.destination);osc.start(now);osc.stop(now+settings[1]+.02)}
+      document.addEventListener('pointerdown',event=>{const target=event.target.closest('.project-filter,.dock-link,.button,.social-link');if(!target)return;const kind=target.matches('.project-filter')?'filter':target.matches('.dock-link')?'nav':target.matches('.social-link,.button')?'link':'click';blip(kind)},{passive:true});
     }());
     q('#year').textContent=new Date().getFullYear();
   </script>
